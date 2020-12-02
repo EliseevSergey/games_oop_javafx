@@ -29,6 +29,7 @@ public class Win {
             if (board[diagonal][diagonal] == 1) {
                 if ((monoHorizontal(board, diagonal)) || monoVertical(board,diagonal)) {
                     rsl = true;
+                    break;
                 }
             }
         }
