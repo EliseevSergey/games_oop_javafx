@@ -1,6 +1,7 @@
 package ru.job4j.chess.firuges.black;
 
 import ru.job4j.chess.ImpossibleMoveException;
+import ru.job4j.chess.OccupiedCellException;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 
@@ -9,8 +10,8 @@ import java.util.Objects;
 public class BishopBlack implements Figure {
     private final Cell position;
 
-    public BishopBlack(final Cell ps) {
-        position = ps;
+    public BishopBlack(final Cell position) {
+        this.position = position;
     }
 
     @Override
@@ -38,10 +39,6 @@ public class BishopBlack implements Figure {
             steps[index] = Cell.findBy((this.position.getX() - 1 - index), (this.position.getY() + 1 + index));
             }
         }
-           // throw new IllegalStateException(
-          //          String.format("Could not way by diagonal from %s to %s", position, dest)
-         //   );
-
         return steps;
     }
 
@@ -60,10 +57,5 @@ public class BishopBlack implements Figure {
         if (o == null || getClass() != o.getClass()) return false;
         BishopBlack that = (BishopBlack) o;
         return position == that.position;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(position);
     }
 }

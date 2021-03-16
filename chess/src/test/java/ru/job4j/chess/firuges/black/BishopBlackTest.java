@@ -6,6 +6,7 @@ import ru.job4j.chess.firuges.Cell;
 import static org.hamcrest.core.Is.is;
 import ru.job4j.chess.ImpossibleMoveException;
 
+
 public class BishopBlackTest {
 
     @Test
@@ -62,9 +63,8 @@ public class BishopBlackTest {
     }
 
     @Test (expected = ImpossibleMoveException.class)
-    public void testWayB8toH6Exeption() throws ImpossibleMoveException {
+    public void testWayB8toH6ExeptionMove() throws ImpossibleMoveException {
         BishopBlack bishopBlack = new BishopBlack(Cell.B8);
         bishopBlack.way(Cell.H6);
     }
-
 }
