@@ -26,17 +26,19 @@ public class BishopBlack implements Figure {
         }
         int size = Math.abs(dest.getX() - this.position.getX());
         Cell[] steps = new Cell[size];
-        int deltaX =  dest.getX() - this.position.getX();
-        int deltaY =  dest.getY() - this.position.getY();
-            for (int index = 0; index < size; index++) {
-                if (deltaX > 0 && deltaY < 0) {
-                steps[index] = Cell.findBy((this.position.getX() + 1 + index), (this.position.getY() - 1 - index));
+        int deltaX =  (dest.getX() - this.position.getX()) > 0 ? 1 : -1;
+        int deltaY =  (dest.getY() - this.position.getY()) > 0 ? 1 : -1;
+        int x = this.position.getX() + deltaX;
+        int y = this.position.getY() + deltaY;
+        for (int index = 0; index < size; index++) {
+            if (deltaX > 0 && deltaY < 0) {
+                steps[index] = Cell.findBy(x + index, y - index);
             } else if (deltaX > 0 && deltaY > 0) {
-            steps[index] = Cell.findBy((this.position.getX() + 1 + index), (this.position.getY() + 1 + index));
+                steps[index] = Cell.findBy(x + index, y + index);
             } else if (deltaX < 0 && deltaY < 0) {
-            steps[index] = Cell.findBy((this.position.getX() - 1 - index), (this.position.getY() - 1 - index));
+                steps[index] = Cell.findBy(x - index, y - index);
             } else if (deltaX < 0 && deltaY > 0) {
-            steps[index] = Cell.findBy((this.position.getX() - 1 - index), (this.position.getY() + 1 + index));
+                steps[index] = Cell.findBy(x - index, y + index);
             }
         }
         return steps;
